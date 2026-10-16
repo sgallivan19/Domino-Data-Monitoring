@@ -1,0 +1,797 @@
+{
+  "model": "claude-opus-5-5",
+  "run_at": "2026-10-15T23:32:05+00:00",
+  "n_reviewed": 42,
+  "n_flagged": 20,
+  "n_errors": 0,
+  "results": [
+    {
+      "USUBJID": "XYZ-301-101-032",
+      "status": "ok",
+      "flagged": true,
+      "severity": "Medium",
+      "category": "PII_OR_INAPPROPRIATE",
+      "out_of_place": "DCSREASP contains the subject's full name \"John R. Whitfield\" and describes a subject-initiated withdrawal that should have been coded as WITHDRAWAL BY SUBJECT rather than OTHER.",
+      "rationale": "DCSREASP (and DCTREASP) include a personal identifier (a full name), which must be removed from the database. The text also describes the subject asking to stop because of work commitments, which the controlled term WITHDRAWAL BY SUBJECT already covers, so DCSREAS=OTHER is misclassified.",
+      "suggested_reason": "WITHDRAWAL BY SUBJECT",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-102-019",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREAS=OTHER with DCSREASP 'Subject incarcerated; unable to attend study visits.' gives a clear reason that no controlled term covers, and it agrees with DCTREASP, EOSSTT=DISCONTINUED, EOSDT=LSTALVDT=2025-07-02, DTHFL=N and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-102-040",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP gives a clear logistical reason (a new job with rotating offshore shifts prevents visit attendance), comparable to relocation, that no controlled term covers, and nothing in the record contradicts it: DCTREASP matches, EOSDT 2025-08-05 equals LSTALVDT, DTHFL=N, and there are no ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-103-034",
+      "status": "ok",
+      "flagged": true,
+      "severity": "Medium",
+      "category": "UNINTELLIGIBLE_OR_UNINFORMATIVE",
+      "out_of_place": "DCSREASP is just \"other\", which restates the category and gives no actual reason for discontinuation.",
+      "rationale": "DCSREAS = OTHER with DCSREASP = \"other\" (and likewise DCTREASP = \"other\") does not state any reason, so the site should be queried to specify the actual reason or reclassify it to a controlled term; EOSSTT = DISCONTINUED with EOSDT 2025-10-15, DTHFL = N, and no ADAE records offer no further clarification.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-103-041",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREAS=OTHER with DCSREASP describing relocation after the subject's home was destroyed in flooding is a clear, plausible reason that no controlled term covers, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, EOSDT=2025-09-29, DTHFL=N, LSTALVDT=2025-09-29 and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DTHFL",
+        "LSTALVDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-104-026",
+      "status": "ok",
+      "flagged": true,
+      "severity": "Medium",
+      "category": "UNINTELLIGIBLE_OR_UNINFORMATIVE",
+      "out_of_place": "DCSREASP is \"N/A\" even though DCSREAS is OTHER, so no discontinuation reason is actually stated.",
+      "rationale": "DCSREAS = OTHER requires a specify text, but DCSREASP = \"N/A\" is a placeholder that gives no reason (DCTREASP is also \"N/A\"). The ADAE records (mild, non-serious ALT increased and pruritus, both with AEACN = DOSE NOT CHANGED) do not clearly explain the discontinuation, so the site should be queried for the actual reason.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "AEACN"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-104-031",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes sponsor site closure with no transfer possible, a plausible reason not covered by any controlled term, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, EOSDT/LSTALVDT=2025-04-21, DTHFL=N, and no ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-104-032",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes relocation with no nearby participating site, a clear reason not covered by any controlled term, and it is consistent with DCTREAS/DCTREASP, EOSSTT=DISCONTINUED, EOSDT=LSTALVDT=2025-07-05, DTHFL=N, and no ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-104-041",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREAS=OTHER with DCSREASP describing site closure by sponsor with no alternate site, which no controlled term covers, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, DTHFL=N, LSTALVDT=EOSDT, and no ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DTHFL",
+        "LSTALVDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-105-031",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "CONFLICTS_WITH_DATA",
+      "out_of_place": "DCSREASP states the subject died, but the death variables indicate she was alive, with a last-known-alive date after study discontinuation.",
+      "rationale": "DCSREASP 'Subject passed away at home' contradicts DTHFL='N', a blank DTHDT and LSTALVDT=2025-04-24, which is after EOSDT=2025-04-12, and no ADAE record is fatal or serious. If the death is confirmed, DCSREAS should be DEATH rather than OTHER, and the death variables need correcting; the same issue affects DCTREAS/DCTREASP.",
+      "suggested_reason": "DEATH",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DTHFL",
+        "DTHDT",
+        "LSTALVDT",
+        "EOSDT",
+        "EOSSTT",
+        "DCTREAS",
+        "DCTREASP",
+        "AESER"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-106-045",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP gives a clear, plausible reason (relocation abroad) that no controlled term covers, and it is consistent with EOSSTT=DISCONTINUED, DTHFL=N, the matching DCTREASP, the dates and the absence of AEs.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DCTREASP"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-106-048",
+      "status": "ok",
+      "flagged": true,
+      "severity": "Medium",
+      "category": "PII_OR_INAPPROPRIATE",
+      "out_of_place": "DCSREASP contains a third party's full name (Maria Lopez) and phone number (555-212-4478).",
+      "rationale": "The underlying reason, relocation to Florida, is plausible for OTHER and does not conflict with EOSSTT=DISCONTINUED, DTHFL=N or LSTALVDT=2025-08-19. However, DCSREASP and DCTREASP include personal identifiers that must be removed from the clinical database. The text should be redacted to something like 'Subject relocating out of country (Florida); no nearby site.'",
+      "suggested_reason": "OTHER",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "COUNTRY"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-106-051",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREAS is OTHER, but DCSREASP describes an investigator decision to remove the subject, which the PHYSICIAN DECISION term already covers.",
+      "rationale": "DCSREASP 'PI decided to remove subject from study for safety reasons' is an investigator decision, so OTHER should not have been used (DCTREAS/DCTREASP have the same issue). The only ADAE record (Rash, mild, not related, AEACN = DOSE REDUCED) does not show drug withdrawal, so PHYSICIAN DECISION fits better than ADVERSE EVENT. The site should confirm whether a specific AE drove the decision.",
+      "suggested_reason": "PHYSICIAN DECISION",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "AEDECOD",
+        "AESEV",
+        "AEREL",
+        "AEACN"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-107-022",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREAS is OTHER, but the specify text describes disease progression and the drug not working, which the LACK OF EFFICACY controlled term already covers.",
+      "rationale": "DCSREASP 'Disease progression, drug not working per PI' describes lack of efficacy, so DCSREAS should not be OTHER. DCTREAS/DCTREASP repeat the same misclassification, and with no ADAE records it should not be recoded as ADVERSE EVENT.",
+      "suggested_reason": "LACK OF EFFICACY",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-107-027",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes relocation to a country with no participating sites, which no controlled term covers, and nothing contradicts it: EOSSTT=DISCONTINUED, DTHFL=N, LSTALVDT=2025-06-28 matches EOSDT, and the only AE (Vomiting) resolved 2025-03-02 with dose not changed.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DTHFL",
+        "LSTALVDT",
+        "AEACN",
+        "AENDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-107-029",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes relocation abroad to care for a family member, a clear reason that no controlled term covers, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, DTHFL=N, LSTALVDT=EOSDT, and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DTHFL",
+        "LSTALVDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-107-032",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "CONFLICTS_WITH_DATA",
+      "out_of_place": "DCSREASP reports a confirmed pregnancy for a subject whose SEX is recorded as 'M'.",
+      "rationale": "DCSREASP states 'Pregnancy confirmed at week 12 visit', but ADSL has SEX='M'. Either the specify text belongs to a different subject or SEX is miscoded. If this were a partner pregnancy, the text would need to say so. The same text appears in DCTREASP, and this needs to be resolved with the site.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "SEX",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-107-036",
+      "status": "ok",
+      "flagged": true,
+      "severity": "Medium",
+      "category": "UNINTELLIGIBLE_OR_UNINFORMATIVE",
+      "out_of_place": "DCSREASP contains the keyboard-mash placeholder \"asdf\" instead of a discontinuation reason.",
+      "rationale": "DCSREAS is OTHER but DCSREASP = \"asdf\" (also DCTREASP = \"asdf\") gives no reason. Nothing else in the record explains the discontinuation: the only AE (Vomiting, AEACN = DOSE NOT CHANGED, resolved 2025-05-31) did not lead to withdrawal, and DTHFL = N. The site should be queried for the actual reason.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "AEACN"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-107-037",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREAS=OTHER with DCSREASP describing relocation to a remote area without a participating site is a clear, plausible reason not covered by a controlled term, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, EOSDT/LSTALVDT=2025-07-05, DTHFL=N, and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-109-031",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes a logistical reason (loss of insurance coverage for transport, and the site could not arrange travel) that no controlled term covers. It matches DCTREASP, and nothing contradicts it: EOSSTT=DISCONTINUED, DTHFL=N, LSTALVDT equals EOSDT, and the only AE (non-serious Nausea, AEACN=DOSE NOT CHANGED) does not suggest an AE-driven discontinuation.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "AEACN"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-110-027",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "CONFLICTS_WITH_DATA",
+      "out_of_place": "DCSREASP states the subject completed all study visits per protocol, yet EOSSTT is DISCONTINUED with DCSREAS of OTHER.",
+      "rationale": "The specify text 'Completed all study visits per protocol' describes study completion, which contradicts EOSSTT='DISCONTINUED' and DCSREAS='OTHER' (the same conflict appears in EOTSTT/DCTREAS/DCTREASP). The status should be COMPLETED with no discontinuation reason, or else the actual discontinuation reason should be clarified. Treatment ran from TRTSDT 2025-03-06 to TRTEDT 2025-09-08 and EOSDT is 2025-09-15.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "EOSSTT",
+        "EOSDT",
+        "EOTSTT",
+        "DCTREAS",
+        "DCTREASP",
+        "TRTEDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-110-028",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREAS is OTHER, but the specify text describes failure to contact the subject, which the controlled term LOST TO FOLLOW-UP already covers.",
+      "rationale": "DCSREASP reads 'Unable to contact subject after 3 phone calls and a certified letter'. This is the standard definition of LOST TO FOLLOW-UP, so OTHER should not have been used; the same applies to DCTREAS/DCTREASP. Note also that LSTALVDT equals EOSDT (2025-09-22), which may need confirmation against the date of last actual contact.",
+      "suggested_reason": "LOST TO FOLLOW-UP",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-110-031",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "CONFLICTS_WITH_DATA",
+      "out_of_place": "The specify text describes relocation, which contradicts the coded DCSREAS of ADVERSE EVENT.",
+      "rationale": "DCSREAS is 'ADVERSE EVENT' (as is DCTREAS), but DCSREASP says 'Subject relocated to another state', and the subject has no ADAE records to support an AE-driven discontinuation. The site should confirm the true reason: either code OTHER with the relocation text, or confirm the AE, record it in ADAE, and clear the specify field.",
+      "suggested_reason": "OTHER",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "EOSSTT",
+        "EOSDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-110-034",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP 'Subject began military deployment overseas.' gives a clear reason that no controlled term covers, and it matches DCTREASP, EOSSTT=DISCONTINUED, DTHFL=N and LSTALVDT=EOSDT=2025-11-01 with no related ADAE event (although military deployment at AGE 74 is unusual, nothing in the record contradicts it).",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL",
+        "AGE"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-110-036",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "CONFLICTS_WITH_DATA",
+      "out_of_place": "The relocation date given in the specify text (2026-03-16) is three months after the subject's end-of-study date, so it cannot explain the discontinuation.",
+      "rationale": "DCSREASP says the subject moved abroad on 2026-03-16, but EOSDT and LSTALVDT are 2025-12-16 and TRTEDT is 2025-12-10, so a later move cannot be why the subject discontinued. DCTREASP repeats the same date conflict, so either the date or the reason should be queried.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "EOSDT",
+        "LSTALVDT",
+        "TRTEDT",
+        "DCTREASP",
+        "EOSSTT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-111-023",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP gives a clear site-driven reason (loss of IRB approval with no alternative site within 200 km) that no controlled term covers, and it is consistent with EOSSTT=DISCONTINUED, DTHFL=N, LSTALVDT=EOSDT, the matching DCTREAS/DCTREASP, and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DCTREASP",
+        "DTHFL",
+        "LSTALVDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-111-025",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREASP 'Subject withdrew consent' was recorded under DCSREAS = OTHER even though consent withdrawal is covered by the controlled term WITHDRAWAL BY SUBJECT.",
+      "rationale": "DCSREAS is 'OTHER', but DCSREASP states 'Subject withdrew consent', which maps directly to the controlled term WITHDRAWAL BY SUBJECT. The same misclassification appears in DCTREAS/DCTREASP. No other data (EOSSTT = DISCONTINUED, DTHFL = N, no ADAE records) conflict with the text.",
+      "suggested_reason": "WITHDRAWAL BY SUBJECT",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-111-031",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "CONFLICTS_WITH_DATA",
+      "out_of_place": "DCSREASP states the subject never received study drug, but the data show the subject was dosed for about five months.",
+      "rationale": "TRTSDT=2025-05-01, TRTEDT=2025-09-29, SAFFL=Y, and TRT01A='XYZ-123 100 mg' all indicate exposure to study drug, and both ADAE records have TRTEMFL=Y with AEACN='DOSE NOT CHANGED'. These directly contradict 'Subject never received study drug'. The same text also appears in DCTREASP, so the true discontinuation reason needs to be clarified with the site.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "TRTSDT",
+        "TRTEDT",
+        "SAFFL",
+        "TRT01A",
+        "DCTREASP",
+        "TRTEMFL",
+        "AEACN"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-112-016",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes relocation with no reachable site, a plausible reason no controlled term covers, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, EOSDT/LSTALVDT (2025-06-28), DTHFL=N, and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-112-018",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREAS is OTHER, but the specify text describes an eligibility (inclusion criterion) violation, which the PROTOCOL DEVIATION term already covers.",
+      "rationale": "DCSREASP states 'Subject did not meet inclusion criterion #4 (eGFR), discovered after randomization'. That is an eligibility/protocol violation, so DCSREAS should be PROTOCOL DEVIATION rather than OTHER. DCTREAS/DCTREASP have the same misclassification, and the single ADAE record (AST increased, AEACN DOSE NOT CHANGED) does not suggest the AE drove discontinuation.",
+      "suggested_reason": "PROTOCOL DEVIATION",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "RANDDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-112-019",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP gives a clear logistical reason (the death of the subject's caregiver, not the subject, leaving her unable to travel) that no controlled term covers, and it is consistent with DTHFL='N', LSTALVDT=EOSDT=2025-05-28, and DCTREASP.",
+      "suggested_reason": null,
+      "related_fields": []
+    },
+    {
+      "USUBJID": "XYZ-301-112-020",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes relocation abroad for work, a plausible reason not covered by any controlled term, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, EOSDT/LSTALVDT 2025-03-29, DTHFL=N and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-112-022",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREAS=OTHER with DCSREASP describing site closure after investigator retirement with no alternate site is a clear reason not covered by a controlled term, and it is consistent with DCTREASP, EOSSTT=DISCONTINUED, DTHFL=N, LSTALVDT=EOSDT, and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DTHFL",
+        "LSTALVDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-112-031",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREAS is OTHER while DCSREASP describes discontinuation due to a severe rash adverse event.",
+      "rationale": "DCSREASP states the subject left the study after a severe rash, which matches ADAE AESEQ 2 (Rash, AESEV=SEVERE, AEACN=DRUG WITHDRAWN) and DCTREAS=ADVERSE EVENT, so the controlled term ADVERSE EVENT covers this reason and OTHER should not have been used.",
+      "suggested_reason": "ADVERSE EVENT",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "AEDECOD",
+        "AESEV",
+        "AEACN",
+        "EOSSTT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-113-025",
+      "status": "ok",
+      "flagged": true,
+      "severity": "Medium",
+      "category": "UNINTELLIGIBLE_OR_UNINFORMATIVE",
+      "out_of_place": "DCSREASP is 'see source', which is a placeholder that does not state the reason for study discontinuation.",
+      "rationale": "DCSREAS = OTHER but DCSREASP = 'see source' (DCTREASP is the same) and gives no actual reason, so the discontinuation cannot be classified or verified. ADAE shows no AE with AEACN = DRUG WITHDRAWN and all AEs resolved by 2025-06-12, well before EOSDT 2025-08-15, so the data do not suggest a specific alternative term; the site should provide the actual reason.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-114-018",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes sponsor termination of the study in the country because of a regulatory decision, which no controlled term covers, so DCSREAS=OTHER is appropriate; it is consistent with DCTREAS/DCTREASP, EOSSTT=DISCONTINUED, EOSDT=2025-02-12, DTHFL=N, and there are no ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "COUNTRY"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-114-025",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREAS is OTHER, but DCSREASP describes ongoing liver enzyme elevations, which is an adverse event.",
+      "rationale": "DCSREASP 'Discontinued due to ongoing liver enzyme elevations' describes an adverse event, so DCSREAS (and DCTREAS) should be ADVERSE EVENT rather than OTHER. The subject's only ADAE record is mild Headache (AEACN = DOSE NOT CHANGED, resolved 2025-08-01), with no hepatic or liver enzyme AE leading to discontinuation, so an ADAE record also appears to be missing.",
+      "suggested_reason": "ADVERSE EVENT",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT",
+        "AEDECOD",
+        "AEACN"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-114-028",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes a move to a long-term care facility outside the site's catchment area, a relocation-type reason that no controlled term covers. It is consistent with DCTREASP, EOSSTT=DISCONTINUED, EOSDT/LSTALVDT 2025-10-18, DTHFL=N, and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-114-029",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREAS is LOST TO FOLLOW-UP and the specify text (moved, contact information unknown, 3 documented contact attempts) is consistent with that term and with DCTREAS, EOSSTT, DTHFL=N and LSTALVDT=EOSDT, and it contains no actual personal identifiers.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-115-020",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP describes emigration with no participating site in the new country, a clear relocation reason not covered by any controlled term, and it is consistent with EOSSTT=DISCONTINUED, EOSDT=2025-05-14, LSTALVDT, DTHFL=N and the absence of ADAE records.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "EOSSTT",
+        "EOSDT",
+        "DCTREASP"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-115-027",
+      "status": "ok",
+      "flagged": true,
+      "severity": "High",
+      "category": "MISCLASSIFIED_REASON",
+      "out_of_place": "DCSREAS is OTHER, but the specify text describes the subject choosing to withdraw, which is covered by WITHDRAWAL BY SUBJECT.",
+      "rationale": "DCSREASP = 'Subject no longer wishes to participate in the study' maps directly to the controlled term WITHDRAWAL BY SUBJECT, so DCSREAS = 'OTHER' should not have been used. DCTREAS/DCTREASP have the same misclassification.",
+      "suggested_reason": "WITHDRAWAL BY SUBJECT",
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREAS",
+        "DCTREASP",
+        "EOSSTT"
+      ]
+    },
+    {
+      "USUBJID": "XYZ-301-115-031",
+      "status": "ok",
+      "flagged": false,
+      "severity": "None",
+      "category": "NONE",
+      "out_of_place": "",
+      "rationale": "DCSREASP gives a clear relocation reason (spouse's long-term hospitalization in another city) that no controlled term covers, and it is consistent with the other fields: DCTREASP matches, DTHFL=N, LSTALVDT equals EOSDT 2025-10-29, and the only AE (mild Diarrhoea, resolved 2025-06-07, dose not changed) is unrelated to discontinuation.",
+      "suggested_reason": null,
+      "related_fields": [
+        "DCSREAS",
+        "DCSREASP",
+        "DCTREASP",
+        "EOSSTT",
+        "EOSDT",
+        "LSTALVDT",
+        "DTHFL",
+        "AEACN"
+      ]
+    }
+  ]
+}

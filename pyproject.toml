@@ -1,0 +1,24 @@
+[project]
+name = "domino-data-monitoring"
+version = "0.1.0"
+description = "POC: clinical study data monitoring with QTL tracking and AI review of free-text fields"
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=1.15",
+    "numpy>=2.2",
+    "pandas>=2.2",
+    "plotly>=6.0",
+    "pydantic>=2.10",
+    "python-dotenv>=1.0",
+    "streamlit>=1.50",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools]
+packages = ["monitoring"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

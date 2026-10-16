@@ -1,0 +1,43 @@
+USUBJID,DCSREAS,DCSREASP,EXPECTED_FLAG,PLANTED_CATEGORY,DESCRIPTION
+XYZ-301-101-032,OTHER,"John R. Whitfield asked to stop, says he is too busy with work",True,PII_OR_INAPPROPRIATE,Contains subject's full name; also describes WITHDRAWAL BY SUBJECT.
+XYZ-301-102-019,OTHER,Subject incarcerated; unable to attend study visits.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-102-040,OTHER,Subject started a job with rotating offshore shifts; cannot attend scheduled visits.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-103-034,OTHER,other,True,UNINTELLIGIBLE_OR_UNINFORMATIVE,Repeats 'other' without specifying.
+XYZ-301-103-041,OTHER,Home destroyed in flooding; subject relocated to temporary housing in another region.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-104-026,OTHER,N/A,True,UNINTELLIGIBLE_OR_UNINFORMATIVE,Non-informative specify text.
+XYZ-301-104-031,OTHER,Site closed by sponsor for business reasons; subject could not be transferred.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-104-032,OTHER,Subject relocated for a new job; nearest participating site is in another country.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-104-041,OTHER,Site closed by sponsor decision; no alternate site within reasonable travel distance.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-105-031,OTHER,Subject passed away at home,True,CONFLICTS_WITH_DATA,Text reports death but DTHFL=N and DTHDT is blank; reason should be DEATH.
+XYZ-301-106-045,OTHER,Subject relocated for university studies in another country.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-106-048,OTHER,"Spoke with daughter Maria Lopez (555-212-4478), subject is moving to Florida",True,PII_OR_INAPPROPRIATE,Contains a third party's name and phone number.
+XYZ-301-106-051,OTHER,PI decided to remove subject from study for safety reasons,True,MISCLASSIFIED_REASON,Investigator decision; should be PHYSICIAN DECISION.
+XYZ-301-107-022,OTHER,"Disease progression, drug not working per PI",True,MISCLASSIFIED_REASON,Describes lack of efficacy; should be LACK OF EFFICACY.
+XYZ-301-107-027,OTHER,Subject moved to Australia; no participating sites in that country.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-107-029,OTHER,Subject became primary carer for a disabled family member abroad and relocated.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-107-032,OTHER,"Pregnancy confirmed at week 12 visit, discontinued per protocol",True,CONFLICTS_WITH_DATA,Pregnancy reported for a subject with SEX=M.
+XYZ-301-107-036,OTHER,asdf,True,UNINTELLIGIBLE_OR_UNINFORMATIVE,Keyboard mash.
+XYZ-301-107-037,OTHER,Subject moved to a remote area with no access to a participating site.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-109-031,OTHER,Subject's insurance no longer covers transport to site; site unable to arrange travel.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-110-027,OTHER,Completed all study visits per protocol,True,CONFLICTS_WITH_DATA,Text says completed but EOSSTT=DISCONTINUED and study ended early.
+XYZ-301-110-028,OTHER,Unable to contact subject after 3 phone calls and a certified letter,True,MISCLASSIFIED_REASON,Describes lost to follow-up; should be LOST TO FOLLOW-UP.
+XYZ-301-110-031,ADVERSE EVENT,Subject relocated to another state,True,CONFLICTS_WITH_DATA,DCSREAS=ADVERSE EVENT but specify text describes relocation; no AE leads to withdrawal.
+XYZ-301-110-034,OTHER,Subject began military deployment overseas.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-110-036,OTHER,Subject moved abroad on 2026-03-16,True,CONFLICTS_WITH_DATA,Date in free text is after EOSDT.
+XYZ-301-111-023,OTHER,Site lost IRB approval; subject declined transfer only because no site is within 200 km.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-111-025,OTHER,Subject withdrew consent,True,MISCLASSIFIED_REASON,Consent withdrawal; should be WITHDRAWAL BY SUBJECT.
+XYZ-301-111-031,OTHER,Subject never received study drug,True,CONFLICTS_WITH_DATA,"TRTSDT populated and SAFFL=Y, so the subject was dosed."
+XYZ-301-112-016,OTHER,Subject relocated to be closer to family in another state; nearest site >300 miles away.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-112-018,OTHER,"Subject did not meet inclusion criterion #4 (eGFR), discovered after randomization",True,MISCLASSIFIED_REASON,Eligibility violation; should be PROTOCOL DEVIATION.
+XYZ-301-112-019,OTHER,Subject's primary caregiver passed away; subject no longer able to travel to the site.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-112-020,OTHER,Subject relocated to another country for work; unable to attend site visits.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-112-022,OTHER,Site closed following investigator retirement; no alternate site available to subject.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-112-031,OTHER,"Pt developed severe rash on arms and torso, investigator stopped study drug and pt left study",True,MISCLASSIFIED_REASON,Free text describes an adverse event (rash); should be ADVERSE EVENT.
+XYZ-301-113-025,OTHER,see source,True,UNINTELLIGIBLE_OR_UNINFORMATIVE,Refers to source instead of specifying reason.
+XYZ-301-114-018,OTHER,Sponsor terminated study participation in this country due to regulatory decision.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-114-025,OTHER,Discontinued due to ongoing liver enzyme elevations,True,CONFLICTS_WITH_DATA,Text cites liver enzyme AE but ADAE has no hepatic events (only headache); also arguably ADVERSE EVENT.
+XYZ-301-114-028,OTHER,Subject moved to a long-term care facility outside the site's catchment area.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-114-029,LOST TO FOLLOW-UP,"Moved, new address and phone number unknown; 3 contact attempts documented",False,NONE,Specify text consistent with LOST TO FOLLOW-UP.
+XYZ-301-115-020,OTHER,Subject emigrated; site confirmed no participating site in the new country.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
+XYZ-301-115-027,OTHER,Subject no longer wishes to participate in the study,True,MISCLASSIFIED_REASON,Subject's choice; should be WITHDRAWAL BY SUBJECT.
+XYZ-301-115-031,OTHER,Long-term hospitalization of spouse in another city; subject relocated.,False,NONE,Legitimate 'Other' reason not covered by controlled terms.
