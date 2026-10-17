@@ -25,12 +25,17 @@ STATUS_BADGE = {
 SEVERITY_ORDER = ["High", "Medium", "Low"]
 
 
-@st.cache_data
+@st.cache_data(ttl="10m")
 def load_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     return ai_review.load_data()
 
 
-adsl, adae = load_data()
+try:
+    adsl, adae = load_data()
+except FileNotFoundError as e:
+    st.error(str(e), icon=":material/error:")
+    st.stop()
+cache = ai_review.load_cache()
 
 # ---------------------------------------------------------------------------
 # Sidebar
@@ -51,13 +56,11 @@ with st.sidebar:
         st.warning("Secondary limit is above the QTL.")
 
     st.subheader("AI review")
-    can_run = ai_review.has_credentials()
-    if st.button("Re-run AI review", disabled=not can_run, width="stretch"):
-        with st.spinner("The AI is reviewing records…"):
-            ai_review.run_review()
-        st.rerun()
-    if not can_run:
-        st.caption("Set `ANTHROPIC_API_KEY` to enable re-running. Showing cached results.")
+    if cache:
+        st.caption(f"Last run: {cache['run_at']} · Model: `{cache['model']}`")
+    else:
+        st.caption("No AI review results yet.")
+    st.caption("Refreshed by the **AI review** Domino Job (`run_ai_review.sh`).")
 
 tab_qtl, tab_ai = st.tabs([":material/monitoring: QTL Monitoring", ":material/smart_toy: AI Data Review"])
 
@@ -168,9 +171,8 @@ with tab_ai:
     st.info("AI flags are review suggestions. A data manager must confirm each one before raising a query.",
             icon=":material/info:")
 
-    cache = ai_review.load_cache()
     if not cache:
-        st.warning("No AI review results yet. Run `python -m monitoring.ai_review` or use the sidebar button.")
+        st.warning("No AI review results yet. Run the **AI review** Domino Job (`bash run_ai_review.sh`).")
         st.stop()
 
     results = pd.DataFrame(cache["results"])

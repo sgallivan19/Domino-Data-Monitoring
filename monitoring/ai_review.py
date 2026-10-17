@@ -1,6 +1,7 @@
 """AI review of "Reason for study discontinuation" free text (DCSREASP) using an LLM.
 
-Run from the repo root to (re)build the cache used by the dashboard:
+Runs as a Domino Job (run_ai_review.sh) and writes ai_flags.json to the Domino dataset, which the
+dashboard reads. From the repo root:
     python -m monitoring.ai_review
 """
 
@@ -8,6 +9,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
@@ -18,13 +20,18 @@ import pandas as pd
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+REPO_DIR = Path(__file__).resolve().parent.parent
+DATASET_NAME = "Clinical-Data-Monitoring"
+# Domino dataset mount (Git-based projects: /mnt/data/<name>). MONITORING_DATA_DIR overrides, e.g. for a snapshot.
+DATA_DIR = Path(
+    os.environ.get("MONITORING_DATA_DIR") or Path(os.environ.get("DOMINO_DATASETS_DIR", "/mnt/data")) / DATASET_NAME
+)
 CACHE_PATH = DATA_DIR / "ai_flags.json"
 MODEL = "claude-opus-5-5"
 MAX_WORKERS = 8
 
 # Load ANTHROPIC_API_KEY from the repo-root .env (existing environment variables take precedence).
-load_dotenv(DATA_DIR.parent / ".env")
+load_dotenv(REPO_DIR / ".env")
 
 DCSREAS_TERMS = [
     "ADVERSE EVENT", "LACK OF EFFICACY", "LOST TO FOLLOW-UP", "WITHDRAWAL BY SUBJECT",
@@ -86,6 +93,12 @@ severity to "None", category to "NONE", out_of_place to "", and give a one-sente
 
 
 def load_data() -> tuple[pd.DataFrame, pd.DataFrame]:
+    missing = [name for name in ("adsl.csv", "adae.csv") if not (DATA_DIR / name).is_file()]
+    if missing:
+        raise FileNotFoundError(
+            f"{', '.join(missing)} not found in {DATA_DIR}. Check that the {DATASET_NAME} dataset is mounted, "
+            "or set MONITORING_DATA_DIR to the folder that holds the data."
+        )
     read = lambda name: pd.read_csv(DATA_DIR / name, dtype=str, keep_default_na=False)  # noqa: E731
     return read("adsl.csv"), read("adae.csv")
 
@@ -146,6 +159,7 @@ def review_one(client: anthropic.Anthropic, subject: dict, aes: list[dict]) -> d
 
 
 def run_review(max_workers: int = MAX_WORKERS) -> dict:
+    """Review all candidate records and write CACHE_PATH, unless every record errored (keeps the last good run)."""
     adsl, adae = load_data()
     targets = records_to_review(adsl)
     ae_by_subj = {k: g.drop(columns=["STUDYID"]).to_dict("records") for k, g in adae.groupby("USUBJID")}
@@ -163,7 +177,12 @@ def run_review(max_workers: int = MAX_WORKERS) -> dict:
         "n_errors": sum(r["status"] == "error" for r in results),
         "results": results,
     }
-    CACHE_PATH.write_text(json.dumps(payload, indent=2))
+    if results and payload["n_errors"] == len(results):
+        return payload
+    # Write then rename so the dashboard never reads a half-written file.
+    tmp = CACHE_PATH.with_name(CACHE_PATH.name + ".tmp")
+    tmp.write_text(json.dumps(payload, indent=2))
+    os.replace(tmp, CACHE_PATH)
     return payload
 
 
@@ -172,6 +191,13 @@ def load_cache() -> dict | None:
 
 
 if __name__ == "__main__":
+    if not has_credentials():
+        sys.exit("ANTHROPIC_API_KEY is not set. Add it as a Domino environment variable and re-run.")
+    print(f"Data: {DATA_DIR}", flush=True)
     out = run_review()
+    if out["n_reviewed"] and out["n_errors"] == out["n_reviewed"]:
+        print(f"All {out['n_reviewed']} records failed; kept the previous {CACHE_PATH}. First error: "
+              f"{out['results'][0]['error']}", file=sys.stderr)
+        sys.exit(1)
     print(f"Reviewed {out['n_reviewed']} records: {out['n_flagged']} flagged, {out['n_errors']} errors "
           f"-> {CACHE_PATH}")
