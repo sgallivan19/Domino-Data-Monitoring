@@ -168,7 +168,7 @@ with tab_ai:
         "full ADSL record and the subject's ADAE records. The LLM flags text that is misclassified, conflicts with "
         "other data, is uninformative, or contains PII."
     )
-    st.info("AI flags are review suggestions. A data manager must confirm each one before raising a query.",
+    st.info("AI flags are review suggestions. A data manager should confirm each one, and keep in mind the AI may not catch every issue.",
             icon=":material/info:")
 
     if not cache:
