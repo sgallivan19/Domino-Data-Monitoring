@@ -27,7 +27,7 @@ The dashboard only reads the AI review output. The review itself runs as a Domin
 
 ## Deploy on Domino
 
-1. **AI review Job:** in **Jobs → Run**, use the command `bash run_ai_review.sh`. Optionally, add a **Scheduled Job** with the same command, sequential run mode, and a Quartz cron such as `0 0 2 * * ?` (daily at 02:00). The Job needs `ANTHROPIC_API_KEY` as a Domino environment variable. It fails without overwriting the previous results if every record errors.
+1. **AI review Job:** in **Jobs → Run**, use the command `run_ai_review.sh`. The Job needs `ANTHROPIC_API_KEY` as a Domino environment variable. It fails without overwriting the previous results if every record errors.
 2. **App:** in **Deployments → Apps → Publish**, use the launch file `app.sh`. It checks that the dataset is mounted, installs `requirements.txt`, and serves Streamlit on port 8888. The App doesn't need the API key.
 
 ## Data (Domino dataset)
